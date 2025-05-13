@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model EventEaseWebApp.Models.Entities.Booking
+
+<h1>Create New Booking</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="CustomerName">Customer Name</label>
+        <input type="text" class="form-control" id="CustomerName" name="CustomerName" required />
+    </div>
+
+    <div class="form-group">
+        <label for="CustomerEmail">Customer Email</label>
+        <input type="email" class="form-control" id="CustomerEmail" name="CustomerEmail" required />
+    </div>
+
+    <div class="form-group">
+        <label for="EventId">Event</label>
+        <select class="form-control" id="EventId" name="EventId" required>
+            @foreach (var eventItem in ViewData["Events"] as IEnumerable<EventEaseWebApp.Models.Entities.Event>)
+            {
+                <option value="@eventItem.EventId">@eventItem.EventName</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Create Booking</button>
+</form>
+
+<a href="@Url.Action("Index", "Bookings")" class="btn btn-secondary mt-3">Back to List</a>

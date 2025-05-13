@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model EventEaseWebApp.Models.Entities.Event
+
+<h1>Create New Event</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="EventName">Event Name</label>
+        <input type="text" class="form-control" id="EventName" name="EventName" />
+    </div>
+
+    <div class="form-group">
+        <label for="EventDate">Event Date</label>
+        <input type="date" class="form-control" id="EventDate" name="EventDate" />
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <textarea class="form-control" id="Description" name="Description"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="VenueId">Venue</label>
+        <select class="form-control" id="VenueId" name="VenueId">
+            @foreach (var venue in ViewData["Venues"] as List<EventEaseWebApp.Models.Entities.Venue>)
+            {
+                <option value="@venue.VenueId">@venue.VenueName</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Create Event</button>
+</form>
+
+<a href="@Url.Action("List", "Events")" class="btn btn-secondary mt-3">Back to List</a>

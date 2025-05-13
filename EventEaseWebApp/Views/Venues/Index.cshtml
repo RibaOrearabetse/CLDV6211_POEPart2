@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<EventEaseWebApp.Models.Entities.Venue>
+
+<h1>Venues</h1>
+
+<a href="@Url.Action("Create", "Venues")" class="btn btn-primary">Create New Venue</a>
+
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th>Venue Name</th>
+            <th>Location</th>
+            <th>Capacity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var venue in Model)
+        {
+            <tr>
+                <td>@venue.VenueName</td>
+                <td>@venue.Location</td>
+                <td>@venue.Capacity</td>
+                <td>
+                    <a href="@Url.Action("Details", "Venues", new { id = venue.VenueId })" class="btn btn-info">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
